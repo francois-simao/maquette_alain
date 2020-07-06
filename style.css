@@ -800,7 +800,7 @@ h1{
 /* ---------------------------------------------------------DEBUT CSS FOOTER_ABOUT ---------------------------------------------------------*/
 footer.about{
     position: absolute;
-    top: 2082px;
+    top: 2810px;
     margin-left: 65px;
     margin-right: 65px;
 }
@@ -928,8 +928,9 @@ top: 1120px;
 /* -----------------------------------------------------DEBUT CSS FOOTER_REALISATION --------------------------------------------------------*/
 footer.realisation{
     position: absolute;
-    top: 1900px;
+    top: 2700px;
     margin-left: 65px;
     margin-right: 65px;
+    margin-bottom: 30px;
 }
 /* -----------------------------------------------------FIN CSS FOOTER_REALISATION --------------------------------------------------------*/
