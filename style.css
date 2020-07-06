@@ -1,0 +1,935 @@
+/*
+Theme name: maquette Alain
+Version: 1.0
+Description: rendre une maquette administrable
+Author: Francois Simao
+*/
+
+@font-face {
+    font-family: 'poppinsextrabold';
+    src: url('fonts/poppins-extrabold-webfont.eot');
+    src: url('fonts/poppins-extrabold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/poppins-extrabold-webfont.woff2') format('woff2'),
+         url('fonts/poppins-extrabold-webfont.woff') format('woff'),
+         url('fonts/poppins-extrabold-webfont.ttf') format('truetype'),
+         url('fonts/poppins-extrabold-webfont.svg#poppinsextrabold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'poppinsmedium';
+    src: url('fonts/poppins-medium-webfont.eot');
+    src: url('fonts/poppins-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/poppins-medium-webfont.woff2') format('woff2'),
+         url('fonts/poppins-medium-webfont.woff') format('woff'),
+         url('fonts/poppins-medium-webfont.ttf') format('truetype'),
+         url('fonts/poppins-medium-webfont.svg#poppinsmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'poppinslight';
+    src: url('poppins-light-webfont.eot');
+    src: url('poppins-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('poppins-light-webfont.woff2') format('woff2'),
+         url('poppins-light-webfont.woff') format('woff'),
+         url('poppins-light-webfont.ttf') format('truetype'),
+         url('poppins-light-webfont.svg#poppinslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url(//db.onlinewebfonts.com/c/7af32ec3d600b58e6091d4d42ef19545?family=French+Script+MT);
+@font-face {
+    font-family: "French Script MT";
+    src: url("//db.onlinewebfonts.com/t/7af32ec3d600b58e6091d4d42ef19545.eot");
+    src: url("//db.onlinewebfonts.com/t/7af32ec3d600b58e6091d4d42ef19545.eot?#iefix") format("embedded-opentype"),
+         url("//db.onlinewebfonts.com/t/7af32ec3d600b58e6091d4d42ef19545.woff2") format("woff2"),
+         url("//db.onlinewebfonts.com/t/7af32ec3d600b58e6091d4d42ef19545.woff") format("woff"),
+         url("//db.onlinewebfonts.com/t/7af32ec3d600b58e6091d4d42ef19545.ttf") format("truetype"),
+         url("//db.onlinewebfonts.com/t/7af32ec3d600b58e6091d4d42ef19545.svg#French Script MT") format("svg");         
+}
+
+html, body{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* -----------------------------------------------------DEBUT CSS HEADER_ACCUEIL-----------------------------------------------------------*/
+/* DEBUT CSS MENU BURGER */
+.menu-burger{
+      position: relative;
+}
+
+.toggle_btn{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    margin-left: 50px;
+    margin-top: 70px;
+    cursor: pointer;
+}
+
+.toggle_btn span{
+    height: 3px;
+    background-color: rgb(26,26,29);
+    width: 100%;
+    position: absolute;
+    top: 20px;
+    left: 0;
+}
+
+.toggle_btn span:before{
+    content: '';
+    height: 3px;
+    background-color:rgb(26,26,29);
+    width: 100%;
+    position: absolute;
+    top: -10px;
+    left: 0;
+}
+
+.toggle_btn span:after{
+    content: '';
+    height: 3px;
+    background-color:rgb(26,26,29);
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.menu {
+    height: 40px;
+    width: 700px;
+    padding-top: 83px;
+    padding-left: 60px;
+    display: flex;
+}
+
+.menu li{
+    list-style-type: none;
+}
+
+.menu li a{
+    color: rgb(26,26,29);
+    text-decoration: none;
+    padding-top: 75px;
+    padding-left: 60px;
+    font-family: 'poppinsmedium', Arial, serif;
+}
+
+.nav {
+    margin-left: -700px;
+    transition-duration: 0.2s;
+}
+
+.nav_open{
+    margin-left: 0;
+    transition-duration: 0.2s;
+}
+/* FIN CSS MENU BURGER */
+
+.carre{
+    height: 720px;
+    width: 770px;
+    background-color: rgb(5,5,5);  
+    position: relative;
+    top: -123px;
+    right: -815px;
+}
+
+.hm{
+    position: absolute;
+    top:100px;
+    right: 100px;
+}
+
+/* DEBUT CSS SLIDER ARTICLES */
+.slider{
+    position: relative;
+    top: -600px;
+    right: -250px;
+    width: 800px;
+    overflow: hidden; /*Le contenu est encapsulé si besoin pour s'inscrire dans la boîte de remplissage (donc 800px dans notre cas) et aucune
+    barre de défilement n'est affichée*/
+}
+
+.slides{
+    display: flex;
+    animation: glisse 20s infinite; /*on appelle l'animation glisse, déclarée plus bas, qui se jouera en 10secondes et sera répété à l'infino*/
+}
+
+.slide img{
+    width: 800px;
+    height: auto;   /*garde la proportion de l'image vu que j'ai diminiué sa longueur*/
+}
+
+@-webkit-keyframes glisse {                /* glisse est le nom de l'animation, webkit sert à ce que l'animation soit lu sur les anciens
+    navigateurs safari-chrome-opéra-internet explorer*/
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-800px);
+    }
+    35% {
+        transform: translateX(-800px);
+    }
+    50% {
+        transform: translateX(-1600px);
+    }
+    60% {
+        transform: translateX(-1600px);
+    }
+    75% {
+        transform: translateX(-2400px);
+    }
+    85% {
+        transform: translateX(-2400px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@-moz-keyframes glisse {  /*moz sert à lire l'animation sur des anciennes versions de mozilla firefox*/
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-800px);
+    }
+    35% {
+        transform: translateX(-800px);
+    }
+    50% {
+        transform: translateX(-1600px);
+    }
+    60% {
+        transform: translateX(-1600px);
+    }
+    75% {
+        transform: translateX(-2400px);
+    }
+    85% {
+        transform: translateX(-2400px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes glisse {  
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-800px);
+    }
+    35% {
+        transform: translateX(-800px);
+    }
+    50% {
+        transform: translateX(-1600px);
+    }
+    60% {
+        transform: translateX(-1600px);
+    }
+    75% {
+        transform: translateX(-2400px);
+    }
+    85% {
+        transform: translateX(-2400px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.slideshow{
+    width: 70px;
+    height: 150px;
+    position: relative;
+    top:-650px;
+    right: -1150px;
+    display: flex;
+    justify-content: space-around;
+    color: rgb(159,159,163);
+    font-family: 'poppinsmedium', Arial, serif;
+}
+
+.slideshow_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.trait{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    animation: glisse_trait 20s infinite;
+}
+
+@-webkit-keyframes glisse_trait {  
+    0% {transform: translateY(0);}
+    25% {transform: translateY(44px);}
+    35% {transform: translateY(44px);}
+    50% {transform: translateY(88px);}
+    60% {transform: translateY(88px);}
+    75% {transform: translateY(132px);}
+    85% {transform: translateY(132px);}
+    100% {transform: translateY(0);}
+}
+
+@-moz-keyframes glisse_trait {  
+    0% {transform: translateY(0);}
+    25% {transform: translateY(44px);}
+    35% {transform: translateY(44px);}
+    50% {transform: translateY(88px);}
+    60% {transform: translateY(88px);}
+    75% {transform: translateY(132px);}
+    85% {transform: translateY(132px);}
+    100% {transform: translateY(0);}
+}
+
+@keyframes glisse_trait {  
+    0% {transform: translateY(0);}
+    25% {transform: translateY(44px);}
+    35% {transform: translateY(44px);}
+    50% {transform: translateY(88px);}
+    60% {transform: translateY(88px);}
+    75% {transform: translateY(132px);}
+    85% {transform: translateY(132px);}
+    100% {transform: translateY(0);}
+}
+
+.slide-trait:after{
+    content: "";
+    border-top: 2px solid rgb(26,26,29);
+    width: 56px;
+    position: absolute;
+    top: 7px;
+    left: 55px;
+}
+
+.slideshow1:active{
+    font-weight: bold;
+    color: rgb(26,26,29);
+}
+/* FIN CSS SLIDER ARTICLES */
+
+.social_network{
+    width: 70px;
+    position: relative;
+    top:-1300px;
+    margin-left: 30px;
+    transform: rotate(-90deg);
+    display: flex;
+    justify-content: space-between;
+}
+.rotation{
+    width: 70px;
+    position: relative;
+    top:-1000px;
+    margin-left: 30px;
+    transform: rotate(-90deg);
+    display: flex;
+    justify-content: space-between;
+    color: rgb(26,26,29);
+    font-family: 'poppinsmedium', Arial, serif;
+}
+
+.rotation-barre:after{
+    content: "";
+    border-top: 2px solid rgb(26,26,29);
+    width: 60px;
+    position: absolute;
+    top: 23px;
+    left: 72px;
+}
+
+.kylo{
+    position: relative;
+    top:-1300px;
+    right:-170px;
+    font-size: 101px;
+    color: white;
+    width: 500px;
+    line-height: 100px;
+    text-shadow: 3px 5px 5px black;
+    font-family: 'poppinsextrabold', Arial, serif;
+}
+
+.n:after{
+    content: "";
+    border-top: 7px solid white;
+    width: 60px;
+    position: absolute;
+    top: -25px;
+    left: 388px;
+}
+
+.button{
+    background-color: black;
+    color: white;
+    position: relative;
+    top:-1301px;
+    margin-left: 50px;
+    border: 0px;
+    height: 80px;
+    width: 200px;
+    font-family: 'poppinsmedium', Arial, serif;
+}
+
+.play{
+    background-color: white;
+    position: relative;
+    top:-1301px;
+    margin-left: -4px;
+    border: 0px;
+    height: 81px;
+    width: 80px;
+    vertical-align: middle;
+}
+/* -----------------------------------------------------FIN CSS HEADER_ACCUEIL--------------------------------------------------------------*/
+/* -----------------------------------------------------DEBUT CSS PAGE_ACCUEIL.PHP----------------------------------------------------------*/
+/* DEBUT CSS BOUCLE ARTICLES */
+.boucle{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    top: -1000px;
+}
+
+.mise_en_page_boucle{
+    margin-bottom: -4px;
+}
+
+.wp-block-image, .wp-block-gallery,.columns-1,.is-cropped, h2, ul, li{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+/* FIN CSS BOUCLE ARTICLES */
+
+/* .mise-en-page-articles{
+    clear: both;       supprime toute mise en page pour la div suivante
+} */
+
+.container-tab{
+    display: flex;
+    justify-content: center;
+}
+
+.tab{
+    position: relative;
+    top:-1130px;
+    width: 460px;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(159,159,163);
+    font-family: 'poppinsmedium', Arial, serif;
+}
+
+.divers:hover:after{
+    font-weight: bold;
+    color: rgb(26,26,29);
+    content: "";
+    border-top: 2px solid rgb(26,26,29);
+    width: 120px;
+    position: absolute;
+    bottom: -1px;
+    left: -30px;
+}
+
+.all:hover:after{
+    font-weight: bold;
+    color: rgb(26,26,29);
+    content: "";
+    border-top: 2px solid rgb(26,26,29);
+    width: 120px;
+    position: absolute;
+    bottom: -1px;
+    left: 83px;
+}
+
+.marvel:hover:after{
+    font-weight: bold;
+    color: rgb(26,26,29);
+    content: "";
+    border-top: 2px solid rgb(26,26,29);
+    width: 120px;
+    position: absolute;
+    bottom: -1px;
+    left: 203px;
+}
+
+.star_wars:hover:after{
+
+    content: "";
+    border-top: 2px solid rgb(26,26,29);
+    width: 120px;
+    position: absolute;
+    bottom: -1px;
+    left: 355px;
+}
+
+.divers:hover{
+    font-weight: bold;
+    color: rgb(26,26,29);
+}
+
+.all:hover{
+    font-weight: bold;
+    color: rgb(26,26,29);
+}
+
+.marvel:hover{
+    font-weight: bold;
+    color: rgb(26,26,29);
+}
+
+.star_wars:hover{
+    font-weight: bold;
+    color: rgb(26,26,29);
+}
+
+.button-explore{
+    display: flex;
+    justify-content: center;
+}
+
+.button-explore button{
+    background-color: black;
+    color: white;
+    position: relative;
+    top: -925px;
+    border: 0px;
+    height: 80px;
+    width: 230px;
+    font-family: 'poppinsmedium', Arial, serif;
+    border-radius: 38px;
+}
+/* -----------------------------------------------------FIN CSS PAGE_ACCUEIL.PHP------------------------------------------------------------*/
+/* -----------------------------------------------------DEBUT CSS FOOTER_ACCUEIL --------------------------------------------------------*/
+footer{
+    position: relative;
+    margin-top: -800px;
+    margin-left: 65px;
+    margin-right: 65px;
+}
+
+.images-footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer_left{
+    max-width: 64%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* DEBUT CSS SLIDER FOOTER*/
+.footer_right{
+    max-width: 500px;
+    max-height: auto;
+    overflow: hidden;
+}
+
+.slides_footer{
+    display: flex;
+    animation: slider_footer 20s infinite;
+}
+
+@-webkit-keyframes slider_footer {          
+    0% {transform: translateX(0);}
+    25% {transform: translateX(-500px);}
+    35% {transform: translateX(-500px);}
+    50% {transform: translateX(-1000px);}
+    60% {transform: translateX(-1000px);}
+    75% {transform: translateX(-1500px);}
+    85% {transform: translateX(-1500px);}
+    100% {transform: translateX(0);}
+}
+
+@-moz-keyframes slider_footer { 
+    0% {transform: translateX(0);}
+    25% {transform: translateX(-500px);}
+    35% {transform: translateX(-500px);}
+    50% {transform: translateX(-1000px);}
+    60% {transform: translateX(-1000px);}
+    75% {transform: translateX(-1500px);}
+    85% {transform: translateX(-1500px);}
+    100% {transform: translateX(0);}
+}
+
+@keyframes slider_footer {  
+    0% {transform: translateX(0);}
+    25% {transform: translateX(-500px);}
+    35% {transform: translateX(-500px);}
+    50% {transform: translateX(-1000px);}
+    60% {transform: translateX(-1000px);}
+    75% {transform: translateX(-1500px);}
+    85% {transform: translateX(-1500px);}
+    100% {transform: translateX(0);}
+}
+/* FIN CSS SLIDER FOOTER*/
+
+h1{
+    font-family: 'poppinsextrabold', Arial, serif;
+    font-size: 65px;
+}
+
+.what{
+    font-family: 'poppinslight', Arial, serif;
+    font-size: 65px;
+    font-weight: lighter;
+}
+
+.footer_left p{
+    font-size: 20px;
+    font-family: 'poppinslight', Arial, serif;
+    color: rgb(119,119,126);
+    text-align: right;
+    line-height: 35px;
+    width: 80%;
+    align-self: flex-end;
+}
+
+.container_newletter{
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: solid 2px rgb(245,245,245);
+    margin-top: 100px;
+    padding-bottom: 25px;
+    margin-right: -30px;
+    margin-left: -30px;
+}
+
+.newletter{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+
+}
+
+.newletter p:before{
+    margin:0;
+    content: "";
+    border-top: 1px solid rgb(180,180,211);
+    width: 40px;
+    position: absolute;
+    transform: rotate(-90deg);
+    top:22px;
+    right: 360px;
+}
+
+.container_social_icons_footer{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: -30px;
+    margin-top: 40px;
+}
+
+.social_icons_footer{
+    width: 110px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 60px;
+
+}
+/* -----------------------------------------------------FIN CSS FOOTER_ABOUT --------------------------------------------------------*/
+/* -----------------------------------------------------DEBUT CSS HEADER_ABOUT ------------------------------------------------------------*/
+
+.image_header_about{
+    position: absolute;
+    top: 0px;
+    padding-right: 50px;
+}
+
+.header_about_left span {
+    background-color: white;
+}
+
+.header_about_left span:before {
+    background-color: white;
+}
+
+.header_about_left span:after {
+    background-color: white;
+}
+
+.header_about_left li a{
+    color: white;
+    text-shadow: 3px 5px 5px black;
+}
+
+.header_about_left .menu-burger{
+    z-index: 1;
+}
+
+.header_about_left .button{
+    position: absolute;
+    top: 833px;
+    z-index: 2;
+    background-color: rgb(26,26,29);
+    color: white;
+    font-family: 'poppinsmedium', Arial, serif;
+    margin-left: 0;
+}
+
+.contact{
+    background-color: white;
+    position: absolute;
+    top: 833px;
+    margin-left: 200px;
+    border: 0px;
+    height: 81px;
+    width: 80px;
+    vertical-align: middle;
+    z-index: 2;
+}
+
+.lien_contact{
+    text-decoration:none;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.square{
+    background-color: rgb(26,26,29);
+    height: 420px;
+    width: 200px;
+}
+
+.header_about_right{
+    color: black;
+    max-width: 31%;
+    position: absolute;
+    right: 315px;
+    font-family: 'poppinsmedium', Arial, serif;
+    font-size: 16px;
+    line-height: 32px;
+    margin-top: 92px;
+    margin-bottom: 30px;
+}
+
+.header_about{
+    display: flex;
+    justify-content: space-between;
+}
+
+.h{
+    font-family: 'poppinsmedium', Arial, serif;
+    font-size: 71px;
+    position: relative;
+    top: 84px;
+}
+
+.header_about_right h1{
+    font-family: 'poppinsmedium', Arial, serif;
+    font-size: 22px;
+    margin-left: 58px;
+    margin-bottom: 25px;
+}
+
+.square_dream{
+    background-color: rgb(26,26,29);
+    height: 213px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: 'French Script MT', Arial, sans-serif;
+    font-size: 39px;
+    font-weight: bold;
+    padding-left: 110px;
+    padding-right: 110px;
+    text-align: center;
+}
+
+/* -----------------------------------------------------FIN CSS HEADER_ABOUT --------------------------------------------------------------*/
+/* --------------------------------------------------------DEBUT CSS PAGE_ABOUT -----------------------------------------------------------*/
+.tab-about{
+        position: absolute;
+        top: 980px;
+        width: 460px;
+        display: flex;
+        justify-content: space-between;
+        color: rgb(159,159,163);
+        font-family: 'poppinsmedium', Arial, serif;
+        }
+
+.boucle-about{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    top: 1102px;
+}
+
+.button-explore-about{
+    display: flex;
+    justify-content: center;
+}
+
+.button-explore-about button{
+    background-color: black;
+    color: white;
+    position: absolute;
+    top: 2007px;
+    border: 0px;
+    height: 80px;
+    width: 230px;
+    font-family: 'poppinsmedium', Arial, serif;
+    border-radius: 38px;
+}
+/* ----------------------------------------------------------FIN CSS PAGE_ABOUT ------------------------------------------------------------*/
+/* ---------------------------------------------------------DEBUT CSS FOOTER_ABOUT ---------------------------------------------------------*/
+footer.about{
+    position: absolute;
+    top: 2082px;
+    margin-left: 65px;
+    margin-right: 65px;
+}
+
+.container_newletter-about{
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: solid 2px rgb(245,245,245);
+    margin-top: 100px;
+    padding-bottom: 25px;
+    margin-right: -30px;
+    margin-left: -30px;
+}
+
+.newletter-about{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 50px;
+    margin-left: 1210px;
+
+}
+
+.newletter-about p:before{
+    margin:0;
+    content: "";
+    border-top: 1px solid rgb(180,180,211);
+    width: 40px;
+    position: absolute;
+    transform: rotate(-90deg);
+    top:22px;
+    right: 360px;
+}
+
+.container_social_icons_footer-about{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1134px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.social_icons_footer-about{
+    width: 110px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: -1164px;
+}
+
+/* -------------------------------------------------------FIN CSS FOOTER_ABOUT ---------------------------------------------------------------*/
+/* -----------------------------------------------------DEBUT CSS HEADER_REALISATION --------------------------------------------------------*/
+
+.header_realisation span {
+    background-color: white;
+}
+
+.header_realisation span:before {
+    background-color: white;
+}
+
+.header_realisation span:after {
+    background-color: white;
+}
+
+.header_realisation li a{
+    color: white;
+    text-shadow: 3px 5px 5px black;
+}
+
+.header_realisation .menu-burger{
+    z-index: 1;
+}
+
+.barre_realisation{
+    background-color: white;
+    height: 100px;
+    width: 90px;
+    position: absolute;
+    left: 1000px;
+    top: 773px;
+    border-top: 2px solid rgb(209,209,226);
+}
+
+.header_realisation h1{
+    position: absolute;
+    left: 1120px;
+    top: 766px;
+    font-size: 40px;
+    font-family: 'poppinsmedium', Arial, serif;
+}
+
+.social_network_realisation{
+    height: 70px;
+    position: absolute;
+    top: 280px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    opacity: 0.2;
+}
+/* -----------------------------------------------------FIN CSS HEADER_REALISATION --------------------------------------------------------*/
+/* -----------------------------------------------------DEBUT CSS PAGE_REALISATION --------------------------------------------------------*/
+.tab-realisation{
+    position: absolute;
+    top: 1004px;
+    width: 460px;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(159,159,163);
+    font-family: 'poppinsmedium', Arial, serif;
+    }
+
+.boucle-realisation{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+position: absolute;
+top: 1120px;
+}
+/* -----------------------------------------------------FIN CSS PAGE_REALISATION --------------------------------------------------------*/
+/* -----------------------------------------------------DEBUT CSS FOOTER_REALISATION --------------------------------------------------------*/
+footer.realisation{
+    position: absolute;
+    top: 1900px;
+    margin-left: 65px;
+    margin-right: 65px;
+}
+/* -----------------------------------------------------FIN CSS FOOTER_REALISATION --------------------------------------------------------*/
